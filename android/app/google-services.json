@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "235081855469",
+    "project_id": "tuza-app",
+    "storage_bucket": "tuza-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235081855469:android:ff378ef1f76926a0d4f7e4",
+        "android_client_info": {
+          "package_name": "com.app.tuuza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235081855469-ii7h225lsrmul0ktl2f3scusrb8uphv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.tuuza",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "235081855469-n491r3aoag25oasb9t7gf2in5stcg1ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Y6mwNf3m2aZdUSHC7MpPDWfMrVu-pY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235081855469-n491r3aoag25oasb9t7gf2in5stcg1ve.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "235081855469-bm94s0d160dk7p3jnia2aqnqmh44uftm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.tuuza"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235081855469:android:0a6f79c4eea1f7fcd4f7e4",
+        "android_client_info": {
+          "package_name": "com.flutter.tuuza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235081855469-ptibmrmf5b11kpggv4vfu7uphf2hmmav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutter.tuuza",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "235081855469-n491r3aoag25oasb9t7gf2in5stcg1ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Y6mwNf3m2aZdUSHC7MpPDWfMrVu-pY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235081855469-n491r3aoag25oasb9t7gf2in5stcg1ve.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "235081855469-bm94s0d160dk7p3jnia2aqnqmh44uftm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.tuuza"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235081855469:android:78ce29318d6184c3d4f7e4",
+        "android_client_info": {
+          "package_name": "com.flutterflow.moodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235081855469-n491r3aoag25oasb9t7gf2in5stcg1ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Y6mwNf3m2aZdUSHC7MpPDWfMrVu-pY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235081855469-n491r3aoag25oasb9t7gf2in5stcg1ve.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "235081855469-bm94s0d160dk7p3jnia2aqnqmh44uftm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.tuuza"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
