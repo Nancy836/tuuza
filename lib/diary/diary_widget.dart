@@ -1,30 +1,32 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../diary_copy_copy/diary_copy_copy_widget.dart';
+import '../diaryadddetails/diaryadddetails_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DiaryWidget extends StatefulWidget {
-  const DiaryWidget({Key key}) : super(key: key);
+  const DiaryWidget({
+    Key key,
+    this.mood,
+  }) : super(key: key);
+
+  final String mood;
 
   @override
   _DiaryWidgetState createState() => _DiaryWidgetState();
 }
 
 class _DiaryWidgetState extends State<DiaryWidget> {
-  TextEditingController textController;
+  TextEditingController entrydescriptionController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    entrydescriptionController = TextEditingController();
   }
 
   @override
@@ -32,16 +34,19 @@ class _DiaryWidgetState extends State<DiaryWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
-        title: Text(
-          'How are you feeling?',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
-                color: FlutterFlowTheme.of(context).primaryColor,
-                fontSize: 22,
-                fontWeight: FontWeight.normal,
-              ),
+        title: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+          child: Text(
+            'So, what happened?',
+            style: FlutterFlowTheme.of(context).title2.override(
+                  fontFamily: 'Poppins',
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  fontSize: 25,
+                  fontWeight: FontWeight.normal,
+                ),
+          ),
         ),
         actions: [
           Padding(
@@ -50,10 +55,10 @@ class _DiaryWidgetState extends State<DiaryWidget> {
               borderColor: Colors.transparent,
               borderRadius: 30,
               buttonSize: 48,
-              fillColor: Colors.white,
+              fillColor: Color(0x00FFFFFF),
               icon: Icon(
                 Icons.close_rounded,
-                color: Color(0xFF95A1AC),
+                color: FlutterFlowTheme.of(context).secondaryText,
                 size: 30,
               ),
               onPressed: () async {
@@ -65,7 +70,7 @@ class _DiaryWidgetState extends State<DiaryWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
         child: Column(
@@ -80,34 +85,25 @@ class _DiaryWidgetState extends State<DiaryWidget> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.94,
                     decoration: BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 200),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
                                   child: TextFormField(
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      'textController',
+                                      'entrydescriptionController',
                                       Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
-                                    onFieldSubmitted: (_) async {
-                                      final entriesCreateData =
-                                          createEntriesRecordData(
-                                        entrydescription: textController.text,
-                                      );
-                                      await EntriesRecord.collection
-                                          .doc()
-                                          .set(entriesCreateData);
-                                    },
-                                    controller: textController,
+                                    controller: entrydescriptionController,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Write here....',
@@ -126,55 +122,48 @@ class _DiaryWidgetState extends State<DiaryWidget> {
                                           fontWeight: FontWeight.normal,
                                         ),
                                     textAlign: TextAlign.start,
-                                    maxLines: 10,
+                                    maxLines: 22,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DiaryCopyCopyWidget(),
+            FFButtonWidget(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DiaryadddetailsWidget(
+                      entrydescription: entrydescriptionController.text,
+                      mood: widget.mood,
                     ),
-                  );
-
-                  final entriesCreateData = createEntriesRecordData(
-                    entrydescription: textController.text,
-                    user: currentUserReference,
-                    entrydate: getCurrentTimestamp,
-                  );
-                  await EntriesRecord.collection.doc().set(entriesCreateData);
-                },
-                text: 'Save',
-                options: FFButtonOptions(
-                  width: 200,
-                  height: 57,
-                  color: Color(0xFF73937E),
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Lexend Deca',
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  elevation: 3,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
                   ),
-                  borderRadius: 18,
+                );
+              },
+              text: 'Continue',
+              options: FFButtonOptions(
+                width: 180,
+                height: 57,
+                color: FlutterFlowTheme.of(context).primaryColor,
+                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                elevation: 3,
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: 1,
                 ),
+                borderRadius: 18,
               ),
             ),
           ],

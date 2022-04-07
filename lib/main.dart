@@ -10,10 +10,11 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:tuuza/splashscreen/splashscreen_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'homepage_copy_copy/homepage_copy_copy_widget.dart';
-import 'diary/diary_widget.dart';
-import 'communitypage/communitypage_widget.dart';
-import 'profile/profile_widget.dart';
+import 'homepage/homepage_widget.dart';
+import 'entries/entries_widget.dart';
+import 'userposts/userposts_widget.dart';
+import 'profile2/profile2_widget.dart';
+import 'profile2_copy/profile2_copy_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -117,10 +118,11 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Homepage': HomepageCopyCopyWidget(),
-      'diary': DiaryWidget(),
-      'communitypage': CommunitypageWidget(),
-      'profile': ProfileWidget(),
+      'Homepage': HomepageWidget(),
+      'entries': EntriesWidget(),
+      'userposts': UserpostsWidget(),
+      'profile2': Profile2Widget(),
+      'profile2Copy': Profile2CopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -128,8 +130,8 @@ class _NavBarPageState extends State<NavBarPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        backgroundColor: Colors.white,
-        selectedItemColor: Color(0xFF35463C),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        selectedItemColor: FlutterFlowTheme.of(context).tertiaryColor,
         unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
         showSelectedLabels: true,
         showUnselectedLabels: true,
@@ -146,14 +148,14 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.menu_book,
-              size: 28,
+              size: 24,
             ),
             label: 'Diary',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.post_add,
+              Icons.group_add_outlined,
               size: 24,
             ),
             label: 'Community',
@@ -161,10 +163,18 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person_outlined,
-              size: 28,
+              Icons.settings,
+              size: 24,
             ),
-            label: 'Profile',
+            label: 'Settings',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              size: 24,
+            ),
+            label: 'Settings',
             tooltip: '',
           )
         ],

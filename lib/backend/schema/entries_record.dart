@@ -26,13 +26,17 @@ abstract class EntriesRecord
   DocumentReference get user;
 
   @nullable
+  String get mood;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(EntriesRecordBuilder builder) => builder
     ..entrydescription = ''
     ..entryimage = ''
-    ..entryname = '';
+    ..entryname = ''
+    ..mood = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('entries');
@@ -61,6 +65,7 @@ Map<String, dynamic> createEntriesRecordData({
   String entryimage,
   String entryname,
   DocumentReference user,
+  String mood,
 }) =>
     serializers.toFirestore(
         EntriesRecord.serializer,
@@ -69,4 +74,5 @@ Map<String, dynamic> createEntriesRecordData({
           ..entrydescription = entrydescription
           ..entryimage = entryimage
           ..entryname = entryname
-          ..user = user));
+          ..user = user
+          ..mood = mood));

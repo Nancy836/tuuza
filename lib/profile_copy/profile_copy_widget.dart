@@ -9,14 +9,14 @@ import '../splashscreen/splashscreen_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfileWidget extends StatefulWidget {
-  const ProfileWidget({Key key}) : super(key: key);
+class ProfileCopyWidget extends StatefulWidget {
+  const ProfileCopyWidget({Key key}) : super(key: key);
 
   @override
-  _ProfileWidgetState createState() => _ProfileWidgetState();
+  _ProfileCopyWidgetState createState() => _ProfileCopyWidgetState();
 }
 
-class _ProfileWidgetState extends State<ProfileWidget> {
+class _ProfileCopyWidgetState extends State<ProfileCopyWidget> {
   String uploadedFileUrl = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -121,26 +121,24 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                              child: AuthUserStreamWidget(
-                                child: Text(
-                                  currentUserDisplayName,
-                                  style: FlutterFlowTheme.of(context)
-                                      .title3
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                ),
+                              child: Text(
+                                'toni',
+                                style: FlutterFlowTheme.of(context)
+                                    .title3
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w300,
+                                    ),
                               ),
                             ),
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                               child: Text(
-                                currentUserEmail,
+                                'n.umutoni@alustudent.com',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(

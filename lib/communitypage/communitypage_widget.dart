@@ -1,5 +1,3 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +57,7 @@ class _CommunitypageWidgetState extends State<CommunitypageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            'Welcome',
+                            'Hey',
                             style: FlutterFlowTheme.of(context).title2.override(
                                   fontFamily: 'Lexend Deca',
                                   color: Color(0xFF090F13),
@@ -69,19 +67,17 @@ class _CommunitypageWidgetState extends State<CommunitypageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                            child: AuthUserStreamWidget(
-                              child: Text(
-                                currentUserDisplayName,
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
+                            child: Text(
+                              'Luna',
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle1
+                                  .override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                           ),
                         ],
@@ -163,32 +159,17 @@ class _CommunitypageWidgetState extends State<CommunitypageWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
-                                        child: AuthUserStreamWidget(
-                                          child: Text(
-                                            currentUserDisplayName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: Color(0xFF090F13),
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
+                                        child: Text(
+                                          'Kev20',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Color(0xFF090F13),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
-                                      ),
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30,
-                                        buttonSize: 46,
-                                        icon: Icon(
-                                          Icons.keyboard_control,
-                                          color: Color(0xFF262D34),
-                                          size: 20,
-                                        ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
                                       ),
                                     ],
                                   ),
@@ -359,32 +340,17 @@ class _CommunitypageWidgetState extends State<CommunitypageWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
-                                        child: AuthUserStreamWidget(
-                                          child: Text(
-                                            currentUserDisplayName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: Color(0xFF090F13),
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
+                                        child: Text(
+                                          'ManziyaRutare',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Color(0xFF090F13),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
-                                      ),
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30,
-                                        buttonSize: 46,
-                                        icon: Icon(
-                                          Icons.keyboard_control,
-                                          color: Color(0xFF262D34),
-                                          size: 20,
-                                        ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
                                       ),
                                     ],
                                   ),
@@ -438,7 +404,7 @@ class _CommunitypageWidgetState extends State<CommunitypageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     4, 0, 0, 0),
                                             child: Text(
-                                              '2,493',
+                                              '20',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText2
@@ -502,7 +468,7 @@ class _CommunitypageWidgetState extends State<CommunitypageWidget> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    'I\'m back with a super quick Instagram redesign just for the fan. Rounded corners and cute icons, what else do we need, haha.⁣ ',
+                                    'Do you ever feel alone in a room full of people?',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(

@@ -40,7 +40,10 @@ class _LoginWidgetState extends State<LoginWidget> {
         height: MediaQuery.of(context).size.height * 1,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.white, FlutterFlowTheme.of(context).tertiaryColor],
+            colors: [
+              FlutterFlowTheme.of(context).primaryBackground,
+              FlutterFlowTheme.of(context).secondaryBackground
+            ],
             stops: [0, 1],
             begin: AlignmentDirectional(0, 1),
             end: AlignmentDirectional(0, -1),
@@ -65,13 +68,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context).primaryText,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 fontSize: 47,
                                 fontWeight: FontWeight.w200,
                               ),
                         ),
                         Text(
-                          'Begin your journey to serenity',
+                          'Your personal safe space',
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).subtitle1.override(
@@ -221,16 +224,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    NavBarPage(initialPage: 'HomepageCopyCopy'),
+                                    NavBarPage(initialPage: 'Homepage'),
                               ),
                               (r) => false,
                             );
                           },
                           text: 'Login',
                           options: FFButtonOptions(
-                            width: 230,
+                            width: 200,
                             height: 60,
-                            color: Color(0xFF73937E),
+                            color: FlutterFlowTheme.of(context).primaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
                                       fontFamily: 'Lexend Deca',
@@ -276,7 +279,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   borderRadius: 30,
                   borderWidth: 1,
                   buttonSize: 50,
-                  fillColor: FlutterFlowTheme.of(context).tertiaryColor,
+                  fillColor: Color(0x1151574C),
                   icon: FaIcon(
                     FontAwesomeIcons.google,
                     color: Color(0xFF0A0903),
@@ -291,7 +294,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            NavBarPage(initialPage: 'HomepageCopyCopy'),
+                            NavBarPage(initialPage: 'Homepage'),
                       ),
                       (r) => false,
                     );
@@ -327,12 +330,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                         },
                         child: Text(
                           'Sign up',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFFB26E63),
-                                    fontSize: 15,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Poppins',
+                                color:
+                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
                         ),
                       ),
                     ),

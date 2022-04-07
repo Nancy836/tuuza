@@ -1,10 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomepageCopyWidget extends StatefulWidget {
@@ -38,7 +39,7 @@ class _HomepageCopyWidgetState extends State<HomepageCopyWidget> {
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: FlutterFlowTheme.of(context).primaryColor,
                         fontSize: 28,
                         fontWeight: FontWeight.w200,
                       ),
@@ -50,8 +51,8 @@ class _HomepageCopyWidgetState extends State<HomepageCopyWidget> {
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w300,
                         ),
                   ),
                 ),
@@ -93,12 +94,12 @@ class _HomepageCopyWidgetState extends State<HomepageCopyWidget> {
                   ),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 185,
+                    height: 250,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          FlutterFlowTheme.of(context).tertiaryColor,
-                          FlutterFlowTheme.of(context).secondaryBackground
+                          FlutterFlowTheme.of(context).primaryBackground,
+                          FlutterFlowTheme.of(context).primaryBackground
                         ],
                         stops: [0, 1],
                         begin: AlignmentDirectional(0, 1),
@@ -124,7 +125,7 @@ class _HomepageCopyWidgetState extends State<HomepageCopyWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .primaryColor,
                                       fontWeight: FontWeight.w200,
                                     ),
                               ),
@@ -150,38 +151,87 @@ class _HomepageCopyWidgetState extends State<HomepageCopyWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      NavBarPage(initialPage: 'diary'),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                buttonSize: 60,
+                                icon: FaIcon(
+                                  FontAwesomeIcons.sadCry,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
+                                  size: 30,
                                 ),
-                              );
-                            },
-                            text: 'Start journal entry',
-                            options: FFButtonOptions(
-                              width: 170,
-                              height: 50,
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              elevation: 1,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
+                                onPressed: () async {
+                                  final entriesCreateData =
+                                      createEntriesRecordData();
+                                  await EntriesRecord.collection
+                                      .doc()
+                                      .set(entriesCreateData);
+                                },
                               ),
-                              borderRadius: 10,
-                            ),
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                buttonSize: 60,
+                                icon: FaIcon(
+                                  FontAwesomeIcons.frown,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                buttonSize: 60,
+                                icon: Icon(
+                                  Icons.add_box_outlined,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                buttonSize: 60,
+                                icon: Icon(
+                                  Icons.add_box_outlined,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                buttonSize: 60,
+                                icon: Icon(
+                                  Icons.add_box_outlined,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -198,7 +248,7 @@ class _HomepageCopyWidgetState extends State<HomepageCopyWidget> {
                       'My latest entries',
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).primaryText,
+                            color: FlutterFlowTheme.of(context).primaryColor,
                             fontSize: 18,
                             fontWeight: FontWeight.w200,
                           ),
