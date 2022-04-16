@@ -13,8 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'homepage/homepage_widget.dart';
 import 'entries/entries_widget.dart';
 import 'userposts/userposts_widget.dart';
-import 'profile2/profile2_widget.dart';
-import 'profile2_copy/profile2_copy_widget.dart';
+import 'settings/settings_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -121,8 +120,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Homepage': HomepageWidget(),
       'entries': EntriesWidget(),
       'userposts': UserpostsWidget(),
-      'profile2': Profile2Widget(),
-      'profile2Copy': Profile2CopyWidget(),
+      'settings': SettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -159,14 +157,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Community',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              size: 24,
-            ),
-            label: 'Settings',
             tooltip: '',
           ),
           BottomNavigationBarItem(

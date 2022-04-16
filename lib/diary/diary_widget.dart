@@ -39,7 +39,7 @@ class _DiaryWidgetState extends State<DiaryWidget> {
         title: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
           child: Text(
-            'So, what happened?',
+            'So, what\'s going on?',
             style: FlutterFlowTheme.of(context).title2.override(
                   fontFamily: 'Poppins',
                   color: FlutterFlowTheme.of(context).primaryColor,

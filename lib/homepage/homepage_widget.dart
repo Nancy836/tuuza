@@ -49,7 +49,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).primaryColor,
                           fontSize: 24,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.normal,
                         ),
                   ),
                 ),
@@ -85,21 +85,15 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
                 child: Material(
                   color: Colors.transparent,
-                  elevation: 1,
+                  elevation: 2,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 250,
+                    height: 280,
                     decoration: BoxDecoration(
-                      color: Color(0xFFE7BC9D),
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: Image.network(
-                          '',
-                        ).image,
-                      ),
+                      color: Color(0x7AFBF4EF),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         color: Color(0x00FBF4EF),
@@ -108,6 +102,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
@@ -122,7 +117,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .alternate,
                                       fontWeight: FontWeight.w300,
                                     ),
                               ),
@@ -140,7 +135,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                   FlutterFlowTheme.of(context).title2.override(
                                         fontFamily: 'Lato',
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                            .tertiaryColor,
                                         fontSize: 27,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -148,7 +143,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                           child: FlutterFlowRadioButton(
                             options: ['Awful', 'Bad', 'Okay', 'Good', 'Awesome']
                                 .toList(),
@@ -157,25 +152,26 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                               setState(() => radioButtonValue = value);
                             },
                             optionHeight: 30,
-                            textStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                ),
                             buttonPosition: RadioButtonPosition.left,
                             direction: Axis.horizontal,
-                            radioButtonColor: Color(0xC851574C),
-                            inactiveRadioButtonColor: Color(0xFFF7E9DE),
+                            radioButtonColor:
+                                FlutterFlowTheme.of(context).tertiaryColor,
+                            inactiveRadioButtonColor: Color(0x497A7A7A),
                             toggleable: false,
                             horizontalAlignment: WrapAlignment.center,
                             verticalAlignment: WrapCrossAlignment.start,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               await Navigator.push(
@@ -191,14 +187,13 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                             options: FFButtonOptions(
                               width: 160,
                               height: 50,
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              color: Color(0xC2DB9C6B),
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                        .primaryBackground,
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -207,7 +202,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 25,
+                              borderRadius: 15,
                             ),
                           ),
                         ),

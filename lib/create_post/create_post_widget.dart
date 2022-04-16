@@ -2,14 +2,11 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_media_display.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_video_player.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../main.dart';
-import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,8 +19,7 @@ class CreatePostWidget extends StatefulWidget {
 }
 
 class _CreatePostWidgetState extends State<CreatePostWidget> {
-  String uploadedFileUrl1 = '';
-  String uploadedFileUrl2 = '';
+  String uploadedFileUrl = '';
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -100,197 +96,77 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 20, 16, 0),
+                                      0, 20, 0, 0),
                                   child: Container(
+                                    width: MediaQuery.of(context).size.width,
                                     height: 250,
-                                    child: Stack(
-                                      children: [
-                                        if (!(functions.mediaUploaded(
-                                                uploadedFileUrl1)) ??
-                                            true)
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16, 0, 16, 0),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                final selectedMedia =
-                                                    await selectMediaWithSourceBottomSheet(
-                                                  context: context,
-                                                  allowPhoto: true,
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                  textColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText,
-                                                  pickerFontFamily: 'Poppins',
-                                                );
-                                                if (selectedMedia != null &&
-                                                    validateFileFormat(
-                                                        selectedMedia
-                                                            .storagePath,
-                                                        context)) {
-                                                  showUploadMessage(
-                                                    context,
-                                                    'Uploading file...',
-                                                    showLoading: true,
-                                                  );
-                                                  final downloadUrl =
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: Image.asset(
+                                          'assets/images/Flexible-Reusable-React-File-Uploader.png',
+                                        ).image,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Color(0x4851574C),
+                                      ),
+                                    ),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        final selectedMedia =
+                                            await selectMediaWithSourceBottomSheet(
+                                          context: context,
+                                          allowPhoto: true,
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
+                                          textColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                          pickerFontFamily: 'Poppins',
+                                        );
+                                        if (selectedMedia != null &&
+                                            selectedMedia.every((m) =>
+                                                validateFileFormat(
+                                                    m.storagePath, context))) {
+                                          showUploadMessage(
+                                            context,
+                                            'Uploading file...',
+                                            showLoading: true,
+                                          );
+                                          final downloadUrls =
+                                              await Future.wait(
+                                                  selectedMedia.map((m) async =>
                                                       await uploadData(
-                                                          selectedMedia
-                                                              .storagePath,
-                                                          selectedMedia.bytes);
-                                                  ScaffoldMessenger.of(context)
-                                                      .hideCurrentSnackBar();
-                                                  if (downloadUrl != null) {
-                                                    setState(() =>
-                                                        uploadedFileUrl1 =
-                                                            downloadUrl);
-                                                    showUploadMessage(
-                                                      context,
-                                                      'Success!',
-                                                    );
-                                                  } else {
-                                                    showUploadMessage(
-                                                      context,
-                                                      'Failed to upload media',
-                                                    );
-                                                    return;
-                                                  }
-                                                }
-                                              },
-                                              child: Container(
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                height: 250,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 3,
-                                                      color: Color(0x2D000000),
-                                                      offset: Offset(0, 1),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    final selectedMedia =
-                                                        await selectMediaWithSourceBottomSheet(
-                                                      context: context,
-                                                      allowPhoto: true,
-                                                    );
-                                                    if (selectedMedia != null &&
-                                                        validateFileFormat(
-                                                            selectedMedia
-                                                                .storagePath,
-                                                            context)) {
-                                                      showUploadMessage(
-                                                        context,
-                                                        'Uploading file...',
-                                                        showLoading: true,
-                                                      );
-                                                      final downloadUrl =
-                                                          await uploadData(
-                                                              selectedMedia
-                                                                  .storagePath,
-                                                              selectedMedia
-                                                                  .bytes);
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .hideCurrentSnackBar();
-                                                      if (downloadUrl != null) {
-                                                        setState(() =>
-                                                            uploadedFileUrl2 =
-                                                                downloadUrl);
-                                                        showUploadMessage(
-                                                          context,
-                                                          'Success!',
-                                                        );
-                                                      } else {
-                                                        showUploadMessage(
-                                                          context,
-                                                          'Failed to upload media',
-                                                        );
-                                                        return;
-                                                      }
-                                                    }
-                                                  },
-                                                  text: 'Upload image',
-                                                  options: FFButtonOptions(
-                                                    width: 200,
-                                                    height: 50,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          fontSize: 25,
-                                                          fontWeight:
-                                                              FontWeight.w300,
-                                                        ),
-                                                    elevation: 2,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius: 12,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        if (functions.mediaUploaded(
-                                                uploadedFileUrl1) ??
-                                            true)
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0, 0),
-                                            child: FlutterFlowMediaDisplay(
-                                              path: uploadedFileUrl1,
-                                              imageBuilder: (path) =>
-                                                  Image.network(
-                                                path,
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                height: double.infinity,
-                                                fit: BoxFit.cover,
-                                              ),
-                                              videoPlayerBuilder: (path) =>
-                                                  FlutterFlowVideoPlayer(
-                                                path: path,
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                autoPlay: false,
-                                                looping: true,
-                                                showControls: true,
-                                                allowFullScreen: true,
-                                                allowPlaybackSpeedMenu: false,
-                                              ),
-                                            ),
-                                          ),
-                                      ],
+                                                          m.storagePath,
+                                                          m.bytes)));
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
+                                          if (downloadUrls != null) {
+                                            setState(() => uploadedFileUrl =
+                                                downloadUrls.first);
+                                            showUploadMessage(
+                                              context,
+                                              'Success!',
+                                            );
+                                          } else {
+                                            showUploadMessage(
+                                              context,
+                                              'Failed to upload media',
+                                            );
+                                            return;
+                                          }
+                                        }
+                                      },
+                                      child: Image.network(
+                                        uploadedFileUrl,
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -309,7 +185,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                             controller: textController,
                                             obscureText: false,
                                             decoration: InputDecoration(
-                                              hintText: 'Write here...',
+                                              hintText: 'Write post here...',
                                               hintStyle: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText2
@@ -384,7 +260,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
               child: FFButtonWidget(
                 onPressed: () async {
                   final postsCreateData = createPostsRecordData(
-                    postImage: uploadedFileUrl1,
+                    postImage: uploadedFileUrl,
                     postDescription: textController.text,
                     postAuthor: currentUserReference,
                     postName: '',

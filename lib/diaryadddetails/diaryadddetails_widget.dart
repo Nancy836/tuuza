@@ -50,7 +50,7 @@ class _DiaryadddetailsWidgetState extends State<DiaryadddetailsWidget> {
             'Almost done!',
             style: FlutterFlowTheme.of(context).title2.override(
                   fontFamily: 'Poppins',
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).tertiaryColor,
                   fontSize: 26,
                   fontWeight: FontWeight.w300,
                 ),
@@ -75,207 +75,214 @@ class _DiaryadddetailsWidgetState extends State<DiaryadddetailsWidget> {
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-      body: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(22, 20, 22, 0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            SvgPicture.asset(
-              'assets/images/undraw_well_done_i2wr_(4).svg',
-              width: MediaQuery.of(context).size.width,
-              height: 300,
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 12),
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.94,
-                decoration: BoxDecoration(),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Give the entry a name',
-                        textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).subtitle2.override(
-                              fontFamily: 'Poppins',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontWeight: FontWeight.w300,
-                            ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                onFieldSubmitted: (_) async {
-                                  final entriesCreateData =
-                                      createEntriesRecordData(
-                                    entryname: '',
-                                  );
-                                  await EntriesRecord.collection
-                                      .doc()
-                                      .set(entriesCreateData);
-                                },
-                                controller: entrynameController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyText2
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF8B97A2),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 20, 0),
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(22, 20, 22, 0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              SvgPicture.asset(
+                'assets/images/undraw_well_done_i2wr_(4).svg',
+                width: MediaQuery.of(context).size.width,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 12),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.94,
+                  decoration: BoxDecoration(),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Give the entry a name',
+                          textAlign: TextAlign.start,
+                          style: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Poppins',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w300,
                               ),
-                            ),
-                          ],
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  onFieldSubmitted: (_) async {
+                                    final entriesCreateData =
+                                        createEntriesRecordData(
+                                      entryname: '',
+                                    );
+                                    await EntriesRecord.collection
+                                        .doc()
+                                        .set(entriesCreateData);
+                                  },
+                                  controller: entrynameController,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .bodyText2
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: Color(0xFF8B97A2),
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    contentPadding:
+                                        EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 20, 0),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Add an image  (optional)',
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        fontWeight: FontWeight.w300,
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Add an image  (optional)',
+                    textAlign: TextAlign.start,
+                    style: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          fontWeight: FontWeight.w300,
+                        ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30,
+                      borderWidth: 1,
+                      buttonSize: 60,
+                      fillColor: Color(0x00F3C891),
+                      icon: Icon(
+                        Icons.upload_sharp,
+                        color: FlutterFlowTheme.of(context).alternate,
+                        size: 47,
                       ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                  child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 1,
-                    buttonSize: 60,
-                    fillColor: Color(0x00F3C891),
-                    icon: Icon(
-                      Icons.upload_sharp,
-                      color: FlutterFlowTheme.of(context).alternate,
-                      size: 47,
-                    ),
-                    onPressed: () async {
-                      final selectedMedia =
-                          await selectMediaWithSourceBottomSheet(
-                        context: context,
-                        allowPhoto: true,
-                      );
-                      if (selectedMedia != null &&
-                          validateFileFormat(
-                              selectedMedia.storagePath, context)) {
-                        showUploadMessage(
-                          context,
-                          'Uploading file...',
-                          showLoading: true,
+                      onPressed: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          allowPhoto: true,
                         );
-                        final downloadUrl = await uploadData(
-                            selectedMedia.storagePath, selectedMedia.bytes);
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        if (downloadUrl != null) {
-                          setState(() => uploadedFileUrl = downloadUrl);
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
                           showUploadMessage(
                             context,
-                            'Success!',
+                            'Uploading file...',
+                            showLoading: true,
                           );
-                        } else {
-                          showUploadMessage(
-                            context,
-                            'Failed to upload media',
-                          );
-                          return;
+                          final downloadUrls = await Future.wait(
+                              selectedMedia.map((m) async =>
+                                  await uploadData(m.storagePath, m.bytes)));
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          if (downloadUrls != null) {
+                            setState(
+                                () => uploadedFileUrl = downloadUrls.first);
+                            showUploadMessage(
+                              context,
+                              'Success!',
+                            );
+                          } else {
+                            showUploadMessage(
+                              context,
+                              'Failed to upload media',
+                            );
+                            return;
+                          }
                         }
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () async {
-                  final entriesCreateData = createEntriesRecordData(
-                    entrydate: getCurrentTimestamp,
-                    entrydescription: widget.entrydescription,
-                    entryimage: uploadedFileUrl,
-                    entryname: entrynameController.text,
-                    user: currentUserReference,
-                    mood: widget.mood,
-                  );
-                  await EntriesRecord.collection.doc().set(entriesCreateData);
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NavBarPage(initialPage: 'Homepage'),
+                      },
                     ),
-                  );
-                },
-                text: 'Save',
-                options: FFButtonOptions(
-                  width: 200,
-                  height: 57,
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  elevation: 2,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
                   ),
-                  borderRadius: 18,
+                ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    final entriesCreateData = createEntriesRecordData(
+                      entrydate: getCurrentTimestamp,
+                      entrydescription: widget.entrydescription,
+                      entryimage: uploadedFileUrl,
+                      entryname: entrynameController.text,
+                      user: currentUserReference,
+                      mood: widget.mood,
+                    );
+                    await EntriesRecord.collection.doc().set(entriesCreateData);
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NavBarPage(initialPage: 'Homepage'),
+                      ),
+                    );
+                  },
+                  text: 'Save',
+                  options: FFButtonOptions(
+                    width: 200,
+                    height: 57,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                    elevation: 2,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: 18,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

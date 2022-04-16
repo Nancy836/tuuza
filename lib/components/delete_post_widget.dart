@@ -6,19 +6,19 @@ import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DeleteEntryWidget extends StatefulWidget {
-  const DeleteEntryWidget({
+class DeletePostWidget extends StatefulWidget {
+  const DeletePostWidget({
     Key key,
-    this.entryparameters,
+    this.postparameters,
   }) : super(key: key);
 
-  final EntriesRecord entryparameters;
+  final PostsRecord postparameters;
 
   @override
-  _DeleteEntryWidgetState createState() => _DeleteEntryWidgetState();
+  _DeletePostWidgetState createState() => _DeletePostWidgetState();
 }
 
-class _DeleteEntryWidgetState extends State<DeleteEntryWidget> {
+class _DeletePostWidgetState extends State<DeletePostWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,15 +31,15 @@ class _DeleteEntryWidgetState extends State<DeleteEntryWidget> {
           children: [
             FFButtonWidget(
               onPressed: () async {
-                await widget.entryparameters.reference.delete();
+                await widget.postparameters.reference.delete();
                 await Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => NavBarPage(initialPage: 'Homepage'),
+                    builder: (context) => NavBarPage(initialPage: 'userposts'),
                   ),
                 );
               },
-              text: 'Delete Entry',
+              text: 'Delete Post',
               options: FFButtonOptions(
                 width: 200,
                 height: 50,

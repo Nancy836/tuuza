@@ -41,7 +41,7 @@ dependencies:
   firebase_storage_web: 3.2.8
   flutter_svg: 0.22.0
   font_awesome_flutter: 8.11.0
-  google_fonts: 2.1.0
+  google_fonts: 2.2.0
   google_sign_in: 5.2.1
   image_picker: 0.8.4+4
   intl: 0.17.0

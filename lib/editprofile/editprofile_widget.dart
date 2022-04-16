@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -107,62 +108,79 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 25),
-                        child: InkWell(
-                          onTap: () async {
-                            final selectedMedia =
-                                await selectMediaWithSourceBottomSheet(
-                              context: context,
-                              allowPhoto: true,
-                              backgroundColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              textColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              pickerFontFamily: 'Lexend Deca',
-                            );
-                            if (selectedMedia != null &&
-                                validateFileFormat(
-                                    selectedMedia.storagePath, context)) {
-                              showUploadMessage(
-                                context,
-                                'Uploading file...',
-                                showLoading: true,
-                              );
-                              final downloadUrl = await uploadData(
-                                  selectedMedia.storagePath,
-                                  selectedMedia.bytes);
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              if (downloadUrl != null) {
-                                setState(() => uploadedFileUrl = downloadUrl);
-                                showUploadMessage(
-                                  context,
-                                  'Success!',
-                                );
-                              } else {
-                                showUploadMessage(
-                                  context,
-                                  'Failed to upload media',
-                                );
-                                return;
-                              }
-                            }
-                          },
-                          child: Container(
-                            width: 120,
-                            height: 120,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                )
-                              ],
-                              shape: BoxShape.circle,
-                              border: Border.all(
+                        child: Container(
+                          width: 120,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            image: DecorationImage(
+                              fit: BoxFit.fitWidth,
+                              image: Image.network(
+                                valueOrDefault<String>(
+                                  editprofileUsersRecord.photoUrl,
+                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
+                                ),
+                              ).image,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                              ),
+                              )
+                            ],
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () async {
+                              final selectedMedia =
+                                  await selectMediaWithSourceBottomSheet(
+                                context: context,
+                                allowPhoto: true,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                textColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                                pickerFontFamily: 'Poppins',
+                              );
+                              if (selectedMedia != null &&
+                                  selectedMedia.every((m) => validateFileFormat(
+                                      m.storagePath, context))) {
+                                showUploadMessage(
+                                  context,
+                                  'Uploading file...',
+                                  showLoading: true,
+                                );
+                                final downloadUrls = await Future.wait(
+                                    selectedMedia.map((m) async =>
+                                        await uploadData(
+                                            m.storagePath, m.bytes)));
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentSnackBar();
+                                if (downloadUrls != null) {
+                                  setState(() =>
+                                      uploadedFileUrl = downloadUrls.first);
+                                  showUploadMessage(
+                                    context,
+                                    'Success!',
+                                  );
+                                } else {
+                                  showUploadMessage(
+                                    context,
+                                    'Failed to upload media',
+                                  );
+                                  return;
+                                }
+                              }
+                            },
+                            child: Image.network(
+                              uploadedFileUrl,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.fill,
                             ),
                           ),
                         ),
@@ -244,7 +262,13 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                               );
                               await currentUserReference
                                   .update(usersUpdateData);
-                              Navigator.pop(context);
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      NavBarPage(initialPage: 'settings'),
+                                ),
+                              );
                             },
                             text: 'Save Changes',
                             options: FFButtonOptions(

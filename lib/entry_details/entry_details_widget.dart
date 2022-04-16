@@ -87,7 +87,9 @@ class _EntryDetailsWidgetState extends State<EntryDetailsWidget> {
                           padding: MediaQuery.of(context).viewInsets,
                           child: Container(
                             height: 250,
-                            child: DeleteEntryWidget(),
+                            child: DeleteEntryWidget(
+                              entryparameters: entryDetailsEntriesRecord,
+                            ),
                           ),
                         );
                       },
